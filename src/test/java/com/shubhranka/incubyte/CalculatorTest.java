@@ -51,4 +51,11 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,-2,-3,-4"));
         assertDoesNotThrow(() -> calculator.add("1,2,3,4"));
     }
+
+    @Test
+    public void shouldReturnSumIfNumbersAreGreaterThan1000AreIgnored() {
+        assertEquals(2, calculator.add("1001,2"));
+        assertEquals(5, calculator.add("1001,2,3"));
+        assertEquals(9, calculator.add("1001,2,3,4"));
+    }
 }

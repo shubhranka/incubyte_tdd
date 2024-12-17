@@ -43,6 +43,9 @@ public class Calculator {
     private int sum(String[] numbersArray) {
         int sum = 0;
         for (String number : numbersArray) {
+            if (Integer.parseInt(number) > 1000) {
+                continue;
+            }
             sum += Integer.parseInt(number);
         }
         return sum;
