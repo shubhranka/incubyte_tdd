@@ -16,4 +16,12 @@ public class CalculatorTest {
         assertEquals(2, calculator.add("2"));
         assertEquals(3, calculator.add("3"));
     }
+
+    @Test
+    public void shouldReturnSumIfNumbersAreProvidedDelimitedByComma() {
+        assertEquals(3, calculator.add("1,2"));
+        assertEquals(5, calculator.add("2,3"));
+        assertEquals(6, calculator.add("1,2,3"));
+        assertEquals(10, calculator.add("1,2,3,4"));
+    }
 }
