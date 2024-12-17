@@ -42,6 +42,7 @@ public class CalculatorTest {
         assertEquals(3, calculator.add("//;\n1;2"));
         assertEquals(6, calculator.add("//:\n1:2:3"));
         assertEquals(10, calculator.add("//t\n1t2t3t4"));
+        assertEquals(10, calculator.add("//***\n1***2***3***4"));
     }
 
     @Test
@@ -57,5 +58,13 @@ public class CalculatorTest {
         assertEquals(2, calculator.add("1001,2"));
         assertEquals(5, calculator.add("1001,2,3"));
         assertEquals(9, calculator.add("1001,2,3,4"));
+    }
+
+    @Test
+    public void shouldReturnSumIfNumbersAreProvidedWithCustomDelimiterOfAnyLength() {
+        assertEquals(6, calculator.add("//[***]\n1***2***3"));
+        assertEquals(10, calculator.add("//[***]\n1***2***3***4"));
+        assertEquals(15, calculator.add("//[ttt]\n1ttt2ttt3ttt4ttt5"));
+        assertEquals(21, calculator.add("//[xyz]\n1xyz2xyz3xyz4xyz5xyz6"));
     }
 }

@@ -25,11 +25,15 @@ public class Calculator {
     }
 
     private String[] splitByCustomDelimiter(String numbers) {
-        String delimiterRegex = "//(.)\n(.*)";
+        String delimiterRegex = "//(.+)\n(.*)";
+        if (numbers.contains("[") && numbers.contains("]")) {
+            delimiterRegex = "//\\[(.+)\\]\n(.*)";
+        }
         Pattern pattern = Pattern.compile(delimiterRegex);
         Matcher matcher = pattern.matcher(numbers);
+        
         if (matcher.find()) {
-            String delimiter = matcher.group(1);
+            String delimiter = Pattern.quote(matcher.group(1));
             String numbersWithoutDelimiter = matcher.group(2);
             return numbersWithoutDelimiter.split(delimiter);
         }
