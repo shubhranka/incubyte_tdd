@@ -16,6 +16,10 @@ public class Calculator {
         }else{
             numbersArray = splitNumbersByCommaOrNewLine(numbers);
         }
+
+        if (containsNegativeNumbers(numbersArray)) {
+            throw new IllegalArgumentException("Negative numbers are not allowed");
+        }
         return sum(numbersArray);
     }
 
@@ -41,5 +45,14 @@ public class Calculator {
             sum += Integer.parseInt(number);
         }
         return sum;
+    }
+
+    private boolean containsNegativeNumbers(String[] numbersArray) {
+        for (String number : numbersArray) {
+            if (Integer.parseInt(number) < 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

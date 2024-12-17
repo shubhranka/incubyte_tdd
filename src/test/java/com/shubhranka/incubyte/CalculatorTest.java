@@ -1,6 +1,8 @@
 package com.shubhranka.incubyte;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
@@ -40,5 +42,13 @@ public class CalculatorTest {
         assertEquals(3, calculator.add("//;\n1;2"));
         assertEquals(6, calculator.add("//:\n1:2:3"));
         assertEquals(10, calculator.add("//t\n1t2t3t4"));
+    }
+
+    @Test
+    public void shouldThrowExceptionIfNegativeNumbersAreProvided() {
+        assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,2"));
+        assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,-2,-3"));
+        assertThrows(IllegalArgumentException.class, () -> calculator.add("-1,-2,-3,-4"));
+        assertDoesNotThrow(() -> calculator.add("1,2,3,4"));
     }
 }
