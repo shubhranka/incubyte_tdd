@@ -18,7 +18,8 @@ public class Calculator {
         }
 
         if (containsNegativeNumbers(numbersArray)) {
-            throw new IllegalArgumentException("Negative numbers are not allowed");
+            String negativeNumbers = getNegativeNumbers(numbersArray);
+            throw new IllegalArgumentException("Negative numbers are not allowed: " + negativeNumbers);
         }
         return sum(numbersArray);
     }
@@ -54,5 +55,15 @@ public class Calculator {
             }
         }
         return false;
+    }
+
+    private String getNegativeNumbers(String[] numbersArray) {
+        String negativeNumbers = "";
+        for (String number : numbersArray) {
+            if (Integer.parseInt(number) < 0) {
+                negativeNumbers += number + " ";
+            }
+        }
+        return negativeNumbers;
     }
 }
