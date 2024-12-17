@@ -6,12 +6,12 @@ public class Calculator {
             return 0;
         }
         
-        String[] numbersArray = splitNumbersByComma(numbers);
+        String[] numbersArray = splitNumbersByCommaOrNewLine(numbers);
         return sum(numbersArray);
     }
 
-    private String[] splitNumbersByComma(String numbers) {
-        return numbers.split(",");
+    private String[] splitNumbersByCommaOrNewLine(String numbers) {
+        return numbers.split(",|\n");
     }
 
     private int sum(String[] numbersArray) {
