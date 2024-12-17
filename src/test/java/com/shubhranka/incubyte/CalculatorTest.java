@@ -67,4 +67,12 @@ public class CalculatorTest {
         assertEquals(15, calculator.add("//[ttt]\n1ttt2ttt3ttt4ttt5"));
         assertEquals(21, calculator.add("//[xyz]\n1xyz2xyz3xyz4xyz5xyz6"));
     }
+
+    @Test
+    public void shouldReturnSumIfNumbersAreProvidedWithMultipleCustomDelimitersOfAnyLength() {
+        assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+        assertEquals(15, calculator.add("//[*][%]\n1*2%3*4%5"));
+        assertEquals(21, calculator.add("//[*][%][xyz]\n1*2%3xyz4%5xyz6"));
+        assertEquals(15, calculator.add("//[**][%%]\n1**2%%3**4%%5"));
+    }
 }
