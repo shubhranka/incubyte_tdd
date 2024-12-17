@@ -9,4 +9,11 @@ public class CalculatorTest {
     public void shouldReturnZeroOnEmptyString() {
         assertEquals(0, calculator.add(""));
     }
+
+    @Test 
+    public void shouldReturnSumIfSingleNumberIsProvided() {
+        assertEquals(1, calculator.add("1"));
+        assertEquals(2, calculator.add("2"));
+        assertEquals(3, calculator.add("3"));
+    }
 }
